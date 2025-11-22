@@ -43,6 +43,8 @@ nav {
   gap: 100px;
   list-style: none;
   align-self: center;
+  justify-content: center;
+  margin-left: 100px;
 }
 
 .nav-btn-container {
@@ -133,4 +135,63 @@ footer {
 
 .footer-right {
   font-size: 0.9rem;
+}
+
+.login-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 250px;
+  height: 250px;
+  padding: 10px;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  border: 2px solid dodgerblue;
+  border-radius: 10px;
+  background-color: dodgerblue;
+  color: white;
+}
+
+.logint-top {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+.login-input {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.login-btns {
+  display: flex;
+  gap: 30px;
+}
+
+.login-container-btn {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+}
+.cancle-container-btn {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
 }
