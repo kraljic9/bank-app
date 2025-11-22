@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.3rem;
+  height: 100vh;
+}
+
+.container {
+  border: 2px purple;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  border: 2px solid blue;
+}
+
+main {
+  border: 2px solid red;
+  flex: 1;
+}
+
+footer {
+  border: 2px solid green;
+}
