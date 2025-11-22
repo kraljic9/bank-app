@@ -7,6 +7,7 @@
 body {
   font-size: 1.3rem;
   height: 100vh;
+  color: white;
 }
 
 .container {
@@ -19,13 +20,42 @@ body {
 
 nav {
   border: 2px solid blue;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: dodgerblue;
 }
 
+.logo-container {
+  border: 1px solid black;
+  align-self: center;
+  margin-left: 20px;
+  font-weight: bolder;
+}
+
+.logo-end {
+  color: orange;
+}
+
+.nav-list {
+  border: 1px solid black;
+  display: flex;
+  gap: 100px;
+  list-style: none;
+}
+
+.nav-btn-container {
+  border: 1px solid black;
+  margin-right: 20px;
+  align-self: center;
+}
 main {
   border: 2px solid red;
   flex: 1;
+  color: dodgerblue;
 }
 
 footer {
   border: 2px solid green;
+  background-color: dodgerblue;
 }
