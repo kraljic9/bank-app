@@ -27,10 +27,13 @@ nav {
 }
 
 .logo-container {
-  border: 1px solid black;
   align-self: center;
   margin-left: 20px;
   font-weight: bolder;
+}
+
+.logo {
+  font-size: 1.4rem;
 }
 
 .logo-end {
@@ -38,17 +41,39 @@ nav {
 }
 
 .nav-list {
-  border: 1px solid black;
   display: flex;
   gap: 100px;
   list-style: none;
+  align-self: center;
 }
 
 .nav-btn-container {
-  border: 1px solid black;
   margin-right: 20px;
   align-self: center;
+  display: flex;
+  gap: 20px;
 }
+
+.nav-login {
+  background-color: orange;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+}
+
+.nav-register {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+}
+
 main {
   border: 2px solid red;
   flex: 1;
