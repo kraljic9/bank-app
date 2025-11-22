@@ -195,3 +195,64 @@ label {
   border: none;
   border-radius: 10px;
 }
+
+.register-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 250px;
+  height: 300px;
+  padding: 10px;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  border: 2px solid dodgerblue;
+  border-radius: 10px;
+  background-color: dodgerblue;
+  color: white;
+}
+
+.register-top {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+.register-input {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.register-btns {
+  display: flex;
+  gap: 30px;
+}
+
+.register-container-btn {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+}
+
+.cancle-container-btn {
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+}
