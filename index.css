@@ -256,3 +256,9 @@ label {
   border: none;
   border-radius: 10px;
 }
+
+/* Display none class */
+
+.display-none {
+  display: none;
+}
