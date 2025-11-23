@@ -54,16 +54,6 @@ nav {
   gap: 20px;
 }
 
-.nav-login {
-  background-color: orange;
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-  width: 100px;
-  border: none;
-  border-radius: 10px;
-}
-
 .nav-register {
   padding: 10px;
   color: white;
@@ -74,10 +64,14 @@ nav {
   border-radius: 10px;
 }
 
-main {
-  flex: 1;
-  color: dodgerblue;
-  padding: 8px;
+.user-message {
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.user-name {
+  color: orange;
+  font-weight: bolder;
 }
 
 footer {
@@ -98,16 +92,21 @@ footer {
   font-size: 0.9rem;
 }
 
+main {
+  flex: 1;
+  color: dodgerblue;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
 .profile-data {
-  border: 3px solid black;
-  margin-top: 12px;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
 .transactions-container {
-  border: 3px solid red;
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
