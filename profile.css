@@ -168,13 +168,6 @@ footer {
 }
 
 .withdraws {
-  border: 3px solid purple;
-  width: 400px;
-  height: 300px;
-  padding: 12px;
-}
-
-.withdraws {
   width: 400px;
   height: 300px;
   padding: 12px;
@@ -223,8 +216,45 @@ footer {
 }
 
 .transactions {
-  border: 3px solid green;
   width: 400px;
   height: 300px;
   padding: 12px;
+  background-color: dodgerblue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.transactions-list {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px;
+}
+
+.transactions-li {
+  background-color: rgb(27, 131, 235);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.transactions-btn-container {
+  display: flex;
+  justify-content: end;
+}
+
+.make-transaction {
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  border: none;
+  border-radius: 10px;
 }
