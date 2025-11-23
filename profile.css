@@ -100,19 +100,71 @@ footer {
 
 .profile-data {
   border: 3px solid black;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .transactions-container {
   border: 3px solid red;
   display: flex;
   justify-content: space-between;
+  margin-top: 32px;
 }
 
 .deposits {
-  border: 3px solid blue;
   width: 400px;
   height: 300px;
   padding: 12px;
+  background-color: dodgerblue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.history-title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.deposits-list {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px;
+}
+
+.deposit-li {
+  background-color: rgb(27, 131, 235);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.deposit-arrow {
+  color: rgb(12, 232, 12);
+  font-weight: bold;
+}
+
+.deposit-btn-container {
+  display: flex;
+  justify-content: end;
+}
+
+.make-deposit {
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  border: none;
+  border-radius: 10px;
 }
 
 .withdraws {
@@ -120,6 +172,18 @@ footer {
   width: 400px;
   height: 300px;
   padding: 12px;
+}
+
+.withdraws {
+  width: 400px;
+  height: 300px;
+  padding: 12px;
+  background-color: dodgerblue;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 .transactions {
