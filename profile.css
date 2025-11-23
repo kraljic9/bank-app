@@ -186,6 +186,42 @@ footer {
   gap: 8px;
 }
 
+.withdraws-list {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px;
+}
+
+.withdraws-li {
+  background-color: rgb(27, 131, 235);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.withdraw-arrow {
+  color: rgb(250, 69, 69);
+}
+
+.withdraw-btn-container {
+  display: flex;
+  justify-content: end;
+}
+
+.make-withdraw {
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  background-color: orange;
+  border: none;
+  border-radius: 10px;
+}
+
 .transactions {
   border: 3px solid green;
   width: 400px;
