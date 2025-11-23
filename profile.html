@@ -28,15 +28,50 @@
 
       <main>
         <div class="main-container-profile">
-          <p>Welcome back User</p>
-          <p>Current Balance: 10000$</p>
-
+          <div class="profile-data">
+          <p class="user-name">Welcome back User</p>
+          <p class="balance">Current Balance: 10000$</p>
+          <p class="spending-sum">You spent a total of: 1000$</p>
+            </div>
           <div class="transactions-container">
-            <div class="deposits"></div>
+            <div class="deposits">
+              <ul>
+              <li>500$+</li>
+              <li>150$+</li>
+              <li>300$+</li>
+              <li>900$+</li>
+              </ul>
 
-            <div class="withdraws"></div>
+              <div class="deposit-btn-container">
+                <button class="make-deposit">Make a deposit</button> 
+              </div>
+            </div>
 
-            <div class="transactions"></div>
+            <div class="withdraws">
+              <ul>
+              <li>-500$</li>
+              <li>-150$</li>
+              <li>-300$</li>
+              <li>-900$</li>
+              </ul>
+
+              <div class="withdraw-btn-container">
+                <button class="make-withdraw">Make a withdraw</button> 
+              </div>
+            </div>
+
+            <div class="transactions">
+              <ul>
+              <li>-500$</li>
+              <li>-150$</li>
+              <li>-300$</li>
+              <li>-900$</li>
+              </ul>
+
+              <div class="transactions-btn-container">
+                <button class="make-transaction">Make a transaction</button> 
+              </div>
+            </div>
           </div>
         </div>
       </main>
