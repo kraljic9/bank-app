@@ -186,7 +186,8 @@ label {
   border: none;
   border-radius: 10px;
 }
-.cancle-container-btn {
+
+.login-cancle-btn {
   padding: 10px;
   color: white;
   font-weight: bold;
@@ -247,7 +248,7 @@ label {
   border-radius: 10px;
 }
 
-.cancle-container-btn {
+.register-cancle-btn {
   padding: 10px;
   color: white;
   font-weight: bold;
