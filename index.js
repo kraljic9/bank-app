@@ -1,3 +1,5 @@
+// Main Page Elements
+
 // Buttons
 let navLoginBtn = document.querySelector(".nav-login");
 let navRegisterBtn = document.querySelector(".nav-register");
@@ -22,6 +24,8 @@ let passwordConfirm = document.querySelector("#password-confirm");
 // Login input fields
 let loginName = document.querySelector("#name-login");
 let passwordLogin = document.querySelector("#password-login");
+
+// Profile Page Elements
 
 // Nav buttons functions
 navLoginBtn.addEventListener("click", function () {
@@ -78,6 +82,14 @@ registerContainerBtn.addEventListener("click", function () {
 // Login Container Btn function
 
 loginContainerBtn.addEventListener("click", function () {
-  console.log(loginName.value);
-  console.log(passwordLogin.value);
+  let accounts = JSON.parse(localStorage.getItem("accountsStorage"));
+
+  accounts.forEach((account) => {
+    if (
+      loginName.value === account.name &&
+      passwordLogin.value === account.password
+    ) {
+      location.href = "profile.html";
+    }
+  });
 });
