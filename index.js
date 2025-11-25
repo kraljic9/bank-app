@@ -1,3 +1,5 @@
+let accountsStorage = [];
+
 // Main Page Elements
 
 // Buttons
@@ -25,17 +27,17 @@ let passwordConfirm = document.querySelector("#password-confirm");
 let loginName = document.querySelector("#name-login");
 let passwordLogin = document.querySelector("#password-login");
 
-// Profile Page Elements
-
 // Nav buttons functions
-navLoginBtn.addEventListener("click", function () {
-  loginContainer.classList.toggle("display-none");
-});
 
 navRegisterBtn.addEventListener("click", function () {
   registerContainer.classList.toggle("display-none");
 });
 
+console.log(navLoginBtn);
+
+navLoginBtn.addEventListener("click", function () {
+  loginContainer.classList.toggle("display-none");
+});
 // Main buttons functions
 mainLoginBtn.addEventListener("click", function () {
   loginContainer.classList.toggle("display-none");
@@ -55,24 +57,27 @@ registerCancleBtn.addEventListener("click", function () {
 
 // Register Container Btn function
 
-let accountsStorage = [];
-
 registerContainerBtn.addEventListener("click", function () {
   let userName = registerInputName.value;
   let userPassword = passwordRegister.value;
   let userConfirmPassowrd = passwordConfirm.value;
 
   class bankAccount {
-    constructor(name, password, balance) {
+    constructor(name, password, balance, deposits, withdraws, transactions) {
       this.name = name;
       this.password = password;
       this.balance = balance;
+      this.deposits = deposits;
+      this.withdraws = withdraws;
+      this.transactions = transactions;
     }
   }
 
   if (userPassword === userConfirmPassowrd) {
     console.log(new bankAccount(userName, userPassword, 10000));
-    accountsStorage.push(new bankAccount(userName, userPassword, 10000));
+    accountsStorage.push(
+      new bankAccount(userName, userPassword, 10000, [], [], [])
+    );
     localStorage.setItem("accountsStorage", JSON.stringify(accountsStorage));
   } else {
     console.error("Please Confirm the password");
@@ -90,6 +95,7 @@ loginContainerBtn.addEventListener("click", function () {
       passwordLogin.value === account.password
     ) {
       location.href = "profile.html";
+      localStorage.setItem("currentAccount", JSON.stringify(account));
     }
   });
 });
