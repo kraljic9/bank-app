@@ -51,10 +51,28 @@ registerCancleBtn.addEventListener("click", function () {
 
 // Register Container Btn function
 
+let accountsStorage = [];
+
 registerContainerBtn.addEventListener("click", function () {
-  console.log(registerInputName.value);
-  console.log(passwordRegister.value);
-  console.log(passwordConfirm.value);
+  let userName = registerInputName.value;
+  let userPassword = passwordRegister.value;
+  let userConfirmPassowrd = passwordConfirm.value;
+
+  class bankAccount {
+    constructor(name, password, balance) {
+      this.name = name;
+      this.password = password;
+      this.balance = balance;
+    }
+  }
+
+  if (userPassword === userConfirmPassowrd) {
+    console.log(new bankAccount(userName, userPassword, 10000));
+    accountsStorage.push(new bankAccount(userName, userPassword, 10000));
+    localStorage.setItem("accountsStorage", JSON.stringify(accountsStorage));
+  } else {
+    console.error("Please Confirm the password");
+  }
 });
 
 // Login Container Btn function
