@@ -6,6 +6,10 @@ let profileUserName = document.querySelector(".user-name");
 let profileBalance = document.querySelector(".balance");
 let profileSpendingSum = document.querySelector(".spending-sum");
 
+// Buttons
+
+let signoutBtn = document.querySelector(".nav-signOut");
+
 // User transaction lists
 
 let depositList = document.querySelector(".deposits-list");
@@ -20,4 +24,11 @@ let transactionBtn = document.querySelector(".make-transaction");
 
 let currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
 
-console.log(currentAccount);
+profileUserName.textContent = `${currentAccount.name}`;
+profileBalance.textContent = `${currentAccount.balance}$`;
+
+signoutBtn.addEventListener("click", function () {
+  currentAccount = "";
+  localStorage.setItem("currentAccount", currentAccount);
+  location.href = "index.html";
+});
