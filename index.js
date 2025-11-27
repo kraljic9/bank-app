@@ -78,6 +78,7 @@ registerContainerBtn.addEventListener("click", function () {
     accountsStorage.push(
       new bankAccount(userName, userPassword, 10000, [], [], [])
     );
+    registerContainer.classList.toggle("display-none");
     localStorage.setItem("accountsStorage", JSON.stringify(accountsStorage));
   } else {
     console.error("Please Confirm the password");

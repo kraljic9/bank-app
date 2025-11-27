@@ -72,6 +72,21 @@ document.addEventListener("DOMContentLoaded", () => {
     listItem.appendChild(listSpan);
     depositList.appendChild(listItem);
   });
+
+  let withdrawArr = currentAccount.withdraws;
+
+  withdrawArr.forEach((withdraw) => {
+    let listItem = document.createElement("li");
+    listItem.classList.add("withdraws-li");
+    listItem.innerText = `-${withdraw}$`;
+
+    let listSpan = document.createElement("span");
+    listSpan.classList.add("withdraw-arrow");
+    listSpan.innerText = "⌄";
+
+    listItem.appendChild(listSpan);
+    withdrawList.appendChild(listItem);
+  });
 });
 
 profileUserName.textContent = `${currentAccount.name}`;
