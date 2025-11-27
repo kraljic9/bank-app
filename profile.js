@@ -30,7 +30,7 @@ let transactionContainer = document.querySelector(".transaction-container");
 
 // Deposit container elements
 
-let depositAmountInput = document.querySelector(".deposit-amount");
+let depositAmountInput = document.querySelector("#deposit-amount");
 
 // Btns
 
@@ -39,7 +39,7 @@ let cancleDepositBtn = document.querySelector(".deposit-cancle-btn");
 
 // Withdraw container elements
 
-let withdrawAmountInput = document.querySelector(".withdraw-amount");
+let withdrawAmountInput = document.querySelector("#withdraw-amount");
 
 // Btns
 
@@ -48,7 +48,7 @@ let cancleWithdrawBtn = document.querySelector(".withdraw-cancle-btn");
 
 // Transaction container elements
 
-let transactionAmountInput = document.querySelector(".transaction-amount");
+let transactionAmountInput = document.querySelector("#transaction-amount");
 
 // Btns
 
@@ -56,6 +56,23 @@ let makeTransactionBtn = document.querySelector(".make-transaction-btn");
 let cancleTransactionBtn = document.querySelector(".transaction-cancle-btn");
 
 let currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
+
+document.addEventListener("DOMContentLoaded", () => {
+  let depositArr = currentAccount.deposits;
+
+  depositArr.forEach((deposit) => {
+    let listItem = document.createElement("li");
+    listItem.classList.add("deposit-li");
+    listItem.innerText = `${deposit} $`;
+
+    let listSpan = document.createElement("span");
+    listSpan.classList.add("deposit-arrow");
+    listSpan.innerText = "^";
+
+    listItem.appendChild(listSpan);
+    depositList.appendChild(listItem);
+  });
+});
 
 profileUserName.textContent = `${currentAccount.name}`;
 profileBalance.textContent = `${currentAccount.balance}$`;
@@ -88,4 +105,56 @@ cancleWithdrawBtn.addEventListener("click", () => {
 
 cancleTransactionBtn.addEventListener("click", () => {
   transactionContainer.classList.toggle("display-none");
+});
+
+makeDepositBtn.addEventListener("click", () => {
+  let depositArr = currentAccount.deposits;
+
+  depositArr.push(depositAmountInput.value);
+  depositContainer.classList.toggle("display-none");
+
+  if (Number(depositAmountInput.value)) {
+    depositArr.forEach((deposit) => {
+      let listItem = document.createElement("li");
+      listItem.classList.add("deposit-li");
+      listItem.innerText = `${deposit}$+`;
+
+      let listSpan = document.createElement("span");
+      listSpan.classList.add("deposit-arrow");
+      listSpan.innerText = "^";
+
+      listItem.appendChild(listSpan);
+      depositList.appendChild(listItem);
+    });
+  } else {
+    console.log("Please enter a numeric value");
+  }
+
+  localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
+});
+
+makeWithdrawBtn.addEventListener("click", () => {
+  let withdrawArr = currentAccount.withdraws;
+
+  withdrawArr.push(withdrawAmountInput.value);
+  withdrawContainer.classList.toggle("display-none");
+
+  if (Number(withdrawAmountInput.value)) {
+    withdrawArr.forEach((withdraw) => {
+      let listItem = document.createElement("li");
+      listItem.classList.add("withdraws-li");
+      listItem.innerText = `-${withdraw}$`;
+
+      let listSpan = document.createElement("span");
+      listSpan.classList.add("withdraw-arrow");
+      listSpan.innerText = "⌄";
+
+      listItem.appendChild(listSpan);
+      withdrawList.appendChild(listItem);
+    });
+  } else {
+    console.log("Please enter a numeric value");
+  }
+
+  localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
 });
