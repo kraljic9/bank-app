@@ -28,6 +28,33 @@ let depositContainer = document.querySelector(".deposit-container");
 let withdrawContainer = document.querySelector(".withdraw-container");
 let transactionContainer = document.querySelector(".transaction-container");
 
+// Deposit container elements
+
+let depositAmountInput = document.querySelector(".deposit-amount");
+
+// Btns
+
+let makeDepositBtn = document.querySelector(".make-deposit-btn");
+let cancleDepositBtn = document.querySelector(".deposit-cancle-btn");
+
+// Withdraw container elements
+
+let withdrawAmountInput = document.querySelector(".withdraw-amount");
+
+// Btns
+
+let makeWithdrawBtn = document.querySelector(".make-withdraw-btn");
+let cancleWithdrawBtn = document.querySelector(".withdraw-cancle-btn");
+
+// Transaction container elements
+
+let transactionAmountInput = document.querySelector(".transaction-amount");
+
+// Btns
+
+let makeTransactionBtn = document.querySelector(".make-transaction-btn");
+let cancleTransactionBtn = document.querySelector(".transaction-cancle-btn");
+
 let currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
 
 profileUserName.textContent = `${currentAccount.name}`;
@@ -48,5 +75,17 @@ withdrawBtn.addEventListener("click", () => {
 });
 
 transactionBtn.addEventListener("click", () => {
+  transactionContainer.classList.toggle("display-none");
+});
+
+cancleDepositBtn.addEventListener("click", () => {
+  depositContainer.classList.toggle("display-none");
+});
+
+cancleWithdrawBtn.addEventListener("click", () => {
+  withdrawContainer.classList.toggle("display-none");
+});
+
+cancleTransactionBtn.addEventListener("click", () => {
   transactionContainer.classList.toggle("display-none");
 });
