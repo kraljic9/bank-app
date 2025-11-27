@@ -316,9 +316,9 @@ main {
 
 .deposit-cancle-btn {
   padding: 10px;
-  color: white;
+  color: black;
   font-weight: bold;
-  background-color: orange;
+  background-color: white;
   width: 100px;
   border: none;
   border-radius: 10px;
@@ -375,9 +375,9 @@ main {
 
 .withdraw-cancle-btn {
   padding: 10px;
-  color: white;
+  color: black;
   font-weight: bold;
-  background-color: orange;
+  background-color: white;
   width: 100px;
   border: none;
   border-radius: 10px;
@@ -434,9 +434,9 @@ main {
 
 .transaction-cancle-btn {
   padding: 10px;
-  color: white;
+  color: black;
   font-weight: bold;
-  background-color: orange;
+  background-color: white;
   width: 100px;
   border: none;
   border-radius: 10px;
