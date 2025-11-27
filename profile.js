@@ -22,6 +22,12 @@ let depositBtn = document.querySelector(".make-deposit");
 let withdrawBtn = document.querySelector(".make-withdraw");
 let transactionBtn = document.querySelector(".make-transaction");
 
+// Transaction containers
+
+let depositContainer = document.querySelector(".deposit-container");
+let withdrawContainer = document.querySelector(".withdraw-container");
+let transactionContainer = document.querySelector(".transaction-container");
+
 let currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
 
 profileUserName.textContent = `${currentAccount.name}`;
@@ -31,4 +37,16 @@ signoutBtn.addEventListener("click", function () {
   currentAccount = "";
   localStorage.setItem("currentAccount", currentAccount);
   location.href = "index.html";
+});
+
+depositBtn.addEventListener("click", () => {
+  depositContainer.classList.toggle("display-none");
+});
+
+withdrawBtn.addEventListener("click", () => {
+  withdrawContainer.classList.toggle("display-none");
+});
+
+transactionBtn.addEventListener("click", () => {
+  transactionContainer.classList.toggle("display-none");
 });
