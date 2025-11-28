@@ -5,6 +5,7 @@
 let profileUserName = document.querySelector(".user-name");
 let profileBalance = document.querySelector(".balance");
 let profileSpendingSum = document.querySelector(".spending-sum");
+let spendAmount = document.querySelector(".spend-amount");
 
 // Buttons
 
@@ -58,6 +59,7 @@ let cancleTransactionBtn = document.querySelector(".transaction-cancle-btn");
 let currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
 let accountsArr = JSON.parse(localStorage.getItem("accountsStorage"));
 
+// Load content
 document.addEventListener("DOMContentLoaded", () => {
   let depositArr = currentAccount.deposits;
 
@@ -72,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     listItem.appendChild(listSpan);
     depositList.appendChild(listItem);
+    currentAccount.balance += Number(deposit);
   });
 
   let withdrawArr = currentAccount.withdraws;
@@ -87,6 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     listItem.appendChild(listSpan);
     withdrawList.appendChild(listItem);
+    currentAccount.balance -= Number(withdraw);
+    profileBalance.textContent = `${currentAccount.balance}$`;
   });
 
   let transactionArr = currentAccount.transactions;
@@ -102,13 +107,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     listItem.appendChild(listSpan);
     transactionList.appendChild(listItem);
+    currentAccount.balance -= Number(transaction.amount);
   });
+
+  profileUserName.textContent = `${currentAccount.name}`;
+  profileBalance.textContent = `${currentAccount.balance}$`;
+  spendAmount.textContent = 0;
 });
 
-profileUserName.textContent = `${currentAccount.name}`;
-profileBalance.textContent = `${currentAccount.balance}$`;
-
-// Signout function WORK HERE !!!!!!!!!!!
+// Signout
 
 signoutBtn.addEventListener("click", function () {
   accountsArr.filter((account) => {
@@ -125,6 +132,8 @@ signoutBtn.addEventListener("click", function () {
   localStorage.setItem("accountsStorage", JSON.stringify(accountsArr));
   location.href = "index.html";
 });
+
+// Button event listeners for containers
 
 depositBtn.addEventListener("click", () => {
   depositContainer.classList.toggle("display-none");
@@ -150,28 +159,31 @@ cancleTransactionBtn.addEventListener("click", () => {
   transactionContainer.classList.toggle("display-none");
 });
 
+// Button event listeners for transactions
+
 makeDepositBtn.addEventListener("click", () => {
   let depositArr = currentAccount.deposits;
 
-  depositArr.push(depositAmountInput.value);
-  depositContainer.classList.toggle("display-none");
-
   if (Number(depositAmountInput.value)) {
-    depositArr.forEach((deposit) => {
-      let listItem = document.createElement("li");
-      listItem.classList.add("deposit-li");
-      listItem.innerText = `${deposit}$+`;
+    depositArr.push(depositAmountInput.value);
+    depositContainer.classList.toggle("display-none");
 
-      let listSpan = document.createElement("span");
-      listSpan.classList.add("deposit-arrow");
-      listSpan.innerText = "^";
+    let listItem = document.createElement("li");
+    listItem.classList.add("deposit-li");
+    listItem.innerText = `${depositAmountInput.value}$+`;
 
-      listItem.appendChild(listSpan);
-      depositList.appendChild(listItem);
-    });
+    let listSpan = document.createElement("span");
+    listSpan.classList.add("deposit-arrow");
+    listSpan.innerText = "^";
+
+    listItem.appendChild(listSpan);
+    depositList.appendChild(listItem);
   } else {
     console.log("Please enter a numeric value");
   }
+
+  currentAccount.balance += Number(depositAmountInput.value);
+  profileBalance.textContent = `${currentAccount.balance}$`;
 
   localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
 });
@@ -181,24 +193,23 @@ makeWithdrawBtn.addEventListener("click", () => {
 
   withdrawArr.push(withdrawAmountInput.value);
   withdrawContainer.classList.toggle("display-none");
-
   if (Number(withdrawAmountInput.value)) {
-    withdrawArr.forEach((withdraw) => {
-      let listItem = document.createElement("li");
-      listItem.classList.add("withdraws-li");
-      listItem.innerText = `-${withdraw}$`;
+    let listItem = document.createElement("li");
+    listItem.classList.add("withdraws-li");
+    listItem.innerText = `-${withdrawAmountInput.value}$`;
 
-      let listSpan = document.createElement("span");
-      listSpan.classList.add("withdraw-arrow");
-      listSpan.innerText = "⌄";
+    let listSpan = document.createElement("span");
+    listSpan.classList.add("withdraw-arrow");
+    listSpan.innerText = "⌄";
 
-      listItem.appendChild(listSpan);
-      withdrawList.appendChild(listItem);
-    });
+    listItem.appendChild(listSpan);
+    withdrawList.appendChild(listItem);
   } else {
     console.log("Please enter a numeric value");
   }
 
+  currentAccount.balance -= withdrawAmountInput.value;
+  profileBalance.textContent = `${currentAccount.balance}$`;
   localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
 });
 
@@ -217,22 +228,23 @@ makeTransactionBtn.addEventListener("click", () => {
     let transactionArr = currentAccount.transactions;
     transactionArr.push(new Recipient(recipientName, transactionAmount));
 
-    transactionArr.forEach((transaction) => {
-      let listItem = document.createElement("li");
-      listItem.classList.add("transactions-li");
-      listItem.innerText = `${transaction.amount}$`;
+    let listItem = document.createElement("li");
+    listItem.classList.add("transactions-li");
+    listItem.innerText = `${transactionAmount}$`;
 
-      let listSpan = document.createElement("span");
-      listSpan.classList.add("transaction-to");
-      listSpan.innerText = `${transaction.name}`;
+    let listSpan = document.createElement("span");
+    listSpan.classList.add("transaction-to");
+    listSpan.innerText = `${recipientName}`;
 
-      listItem.appendChild(listSpan);
-      transactionList.appendChild(listItem);
-    });
+    listItem.appendChild(listSpan);
+    transactionList.appendChild(listItem);
 
     transactionContainer.classList.toggle("display-none");
     localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
   } else {
     console.log("Wrong input values");
   }
+
+  currentAccount.balance -= Number(transactionAmount);
+  profileBalance.textContent = `${currentAccount.balance}$`;
 });
