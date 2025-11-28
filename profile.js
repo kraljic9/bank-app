@@ -49,13 +49,14 @@ let cancleWithdrawBtn = document.querySelector(".withdraw-cancle-btn");
 // Transaction container elements
 
 let transactionAmountInput = document.querySelector("#transaction-amount");
-
+let recipient = document.querySelector("#recipient-name");
 // Btns
 
 let makeTransactionBtn = document.querySelector(".make-transaction-btn");
 let cancleTransactionBtn = document.querySelector(".transaction-cancle-btn");
 
 let currentAccount = JSON.parse(localStorage.getItem("currentAccount"));
+let accountsArr = JSON.parse(localStorage.getItem("accountsStorage"));
 
 document.addEventListener("DOMContentLoaded", () => {
   let depositArr = currentAccount.deposits;
@@ -173,3 +174,42 @@ makeWithdrawBtn.addEventListener("click", () => {
 
   localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
 });
+
+makeTransactionBtn.addEventListener("click", () => {
+  let transactionAmount = transactionAmountInput.value;
+  let recipientName = recipient.value;
+
+  class Recipient {
+    constructor(name, amount) {
+      this.name = name;
+      this.amount = amount;
+    }
+  }
+
+  if (Number(transactionAmount) && typeof recipientName === "string") {
+    let transactionArr = currentAccount.transactions;
+    transactionArr.push(new Recipient(recipientName, transactionAmount));
+
+    transactionArr.forEach((transaction) => {
+      let listItem = document.createElement("li");
+      listItem.classList.add("transactions-li");
+      listItem.innerText = `${transaction.amount}$`;
+
+      let listSpan = document.createElement("span");
+      listSpan.classList.add("transaction-to");
+      listSpan.innerText = `${transaction.name}`;
+
+      listItem.appendChild(listSpan);
+      transactionList.appendChild(listItem);
+    });
+
+    transactionContainer.classList.toggle("display-none");
+    localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
+  } else {
+    console.log("Wrong input values");
+  }
+});
+
+/*
+ 
+  */
