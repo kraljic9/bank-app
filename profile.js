@@ -108,22 +108,23 @@ document.addEventListener("DOMContentLoaded", () => {
 profileUserName.textContent = `${currentAccount.name}`;
 profileBalance.textContent = `${currentAccount.balance}$`;
 
-// Signout function
+// Signout function WORK HERE !!!!!!!!!!!
 
 signoutBtn.addEventListener("click", function () {
   accountsArr.filter((account) => {
     if (currentAccount.name === account.name) {
       let accountIndex = accountsArr.indexOf(account);
       accountsArr.splice(accountIndex, 1, currentAccount);
+
+      return accountsArr;
     }
   });
 
   currentAccount = "";
   localStorage.setItem("currentAccount", currentAccount);
+  localStorage.setItem("accountsStorage", JSON.stringify(accountsArr));
   location.href = "index.html";
 });
-
-console.log(accountsArr);
 
 depositBtn.addEventListener("click", () => {
   depositContainer.classList.toggle("display-none");
