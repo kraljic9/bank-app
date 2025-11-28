@@ -88,16 +88,42 @@ document.addEventListener("DOMContentLoaded", () => {
     listItem.appendChild(listSpan);
     withdrawList.appendChild(listItem);
   });
+
+  let transactionArr = currentAccount.transactions;
+
+  transactionArr.forEach((transaction) => {
+    let listItem = document.createElement("li");
+    listItem.classList.add("transactions-li");
+    listItem.innerText = `${transaction.amount}$`;
+
+    let listSpan = document.createElement("span");
+    listSpan.classList.add("transaction-to");
+    listSpan.innerText = `${transaction.name}`;
+
+    listItem.appendChild(listSpan);
+    transactionList.appendChild(listItem);
+  });
 });
 
 profileUserName.textContent = `${currentAccount.name}`;
 profileBalance.textContent = `${currentAccount.balance}$`;
 
+// Signout function
+
 signoutBtn.addEventListener("click", function () {
+  accountsArr.filter((account) => {
+    if (currentAccount.name === account.name) {
+      let accountIndex = accountsArr.indexOf(account);
+      accountsArr.splice(accountIndex, 1, currentAccount);
+    }
+  });
+
   currentAccount = "";
   localStorage.setItem("currentAccount", currentAccount);
   location.href = "index.html";
 });
+
+console.log(accountsArr);
 
 depositBtn.addEventListener("click", () => {
   depositContainer.classList.toggle("display-none");
@@ -209,7 +235,3 @@ makeTransactionBtn.addEventListener("click", () => {
     console.log("Wrong input values");
   }
 });
-
-/*
- 
-  */
