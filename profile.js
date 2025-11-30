@@ -74,7 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     listItem.appendChild(listSpan);
     depositList.appendChild(listItem);
-    currentAccount.balance += Number(deposit);
   });
 
   let withdrawArr = currentAccount.withdraws;
@@ -90,8 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     listItem.appendChild(listSpan);
     withdrawList.appendChild(listItem);
-    currentAccount.balance -= Number(withdraw);
-    profileBalance.textContent = `${currentAccount.balance}$`;
   });
 
   let transactionArr = currentAccount.transactions;
@@ -107,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     listItem.appendChild(listSpan);
     transactionList.appendChild(listItem);
-    currentAccount.balance -= Number(transaction.amount);
   });
 
   profileUserName.textContent = `${currentAccount.name}`;
