@@ -278,6 +278,19 @@ main {
   border-radius: 4px;
 }
 
+.deposits-list {
+  overflow: auto;
+}
+
+.deposits-list::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+.deposits-list::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
 .deposit-input {
   flex: 1;
 }
@@ -355,6 +368,19 @@ main {
   margin-top: 8px;
 }
 
+.withdraws-list {
+  overflow: auto;
+}
+
+.withdraws-list::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+.withdraws-list::-webkit-scrollbar-thumb {
+  background-color: white;
+}
+
 #withdraw-amount {
   border-radius: 8px;
   padding: 4px;
@@ -412,6 +438,19 @@ main {
 
 .transaction-label {
   margin-top: 8px;
+}
+
+.transactions-list {
+  overflow: auto;
+}
+
+.transactions-list::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+.transactions-list::-webkit-scrollbar-thumb {
+  background-color: white;
 }
 
 #transaction-amount {

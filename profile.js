@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   profileUserName.textContent = `${currentAccount.name}`;
   profileBalance.textContent = `${currentAccount.balance}$`;
-  spendAmount.textContent = 0;
 });
 
 // Signout
@@ -220,6 +219,16 @@ makeTransactionBtn.addEventListener("click", () => {
     }
   }
 
+  accountsArr.forEach((account) => {
+    if (
+      account.name === recipientName &&
+      transactionAmount <= currentAccount.balance
+    ) {
+      account.balance += Number(transactionAmount);
+      localStorage.setItem("accountsStorage", JSON.stringify(accountsArr));
+    }
+  });
+
   if (Number(transactionAmount) && typeof recipientName === "string") {
     let transactionArr = currentAccount.transactions;
     transactionArr.push(new Recipient(recipientName, transactionAmount));
@@ -244,3 +253,26 @@ makeTransactionBtn.addEventListener("click", () => {
   currentAccount.balance -= Number(transactionAmount);
   profileBalance.textContent = `${currentAccount.balance}$`;
 });
+
+function calculateSpending() {
+  let withdrawsSum = currentAccount.withdraws.reduce((cur, acc) => {
+    return Number(cur) + Number(acc);
+  });
+
+  let arr = [];
+
+  currentAccount.transactions.forEach((transaction) => {
+    arr.push(transaction.amount);
+  });
+
+  let transactionsSum = arr.reduce((cur, acc) => {
+    return Number(cur) + Number(acc);
+  });
+
+  return withdrawsSum + transactionsSum;
+}
+
+console.log(calculateSpending());
+
+spendAmount.innerText = `${calculateSpending()}$`;
+console.log(spendAmount);
