@@ -38,6 +38,7 @@ console.log(navLoginBtn);
 navLoginBtn.addEventListener("click", function () {
   loginContainer.classList.toggle("display-none");
 });
+
 // Main buttons functions
 mainLoginBtn.addEventListener("click", function () {
   loginContainer.classList.toggle("display-none");
