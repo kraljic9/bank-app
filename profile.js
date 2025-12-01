@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   profileUserName.textContent = `${currentAccount.name}`;
   profileBalance.textContent = `${currentAccount.balance}$`;
+  calculateSpending();
 });
 
 // Signout
@@ -188,7 +189,10 @@ makeWithdrawBtn.addEventListener("click", () => {
 
   withdrawArr.push(withdrawAmountInput.value);
   withdrawContainer.classList.toggle("display-none");
-  if (Number(withdrawAmountInput.value)) {
+  if (
+    Number(withdrawAmountInput.value) &&
+    withdrawAmountInput.value <= currentAccount.balance
+  ) {
     let listItem = document.createElement("li");
     listItem.classList.add("withdraws-li");
     listItem.innerText = `-${withdrawAmountInput.value}$`;
@@ -200,12 +204,13 @@ makeWithdrawBtn.addEventListener("click", () => {
     listItem.appendChild(listSpan);
     withdrawList.appendChild(listItem);
   } else {
-    console.log("Please enter a numeric value");
+    console.log("Not enough resources");
   }
 
   currentAccount.balance -= withdrawAmountInput.value;
   profileBalance.textContent = `${currentAccount.balance}$`;
   localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
+  calculateSpending();
 });
 
 makeTransactionBtn.addEventListener("click", () => {
@@ -229,7 +234,11 @@ makeTransactionBtn.addEventListener("click", () => {
     }
   });
 
-  if (Number(transactionAmount) && typeof recipientName === "string") {
+  if (
+    Number(transactionAmount) &&
+    typeof recipientName === "string" &&
+    transactionAmount <= Number(transactionAmount)
+  ) {
     let transactionArr = currentAccount.transactions;
     transactionArr.push(new Recipient(recipientName, transactionAmount));
 
@@ -252,27 +261,54 @@ makeTransactionBtn.addEventListener("click", () => {
 
   currentAccount.balance -= Number(transactionAmount);
   profileBalance.textContent = `${currentAccount.balance}$`;
+  calculateSpending();
 });
 
 function calculateSpending() {
-  let withdrawsSum = currentAccount.withdraws.reduce((cur, acc) => {
-    return Number(cur) + Number(acc);
-  });
+  if (
+    currentAccount.withdraws.length === 0 &&
+    currentAccount.transactions.length === 0
+  ) {
+    spendAmount.innerText = 0;
+  } else if (
+    currentAccount.withdraws.length >= 1 &&
+    currentAccount.transactions.length === 0
+  ) {
+    let withdrawSum = currentAccount.withdraws.reduce((cur, acc) => {
+      return Number(cur) + Number(acc);
+    });
 
-  let arr = [];
+    spendAmount.innerText = `${Number(withdrawSum)} $`;
+  } else if (
+    currentAccount.withdraws.length === 0 &&
+    currentAccount.transactions.length >= 1
+  ) {
+    let arr = [];
 
-  currentAccount.transactions.forEach((transaction) => {
-    arr.push(transaction.amount);
-  });
+    currentAccount.transactions.forEach((transaction) => {
+      arr.push(transaction.amount);
+    });
 
-  let transactionsSum = arr.reduce((cur, acc) => {
-    return Number(cur) + Number(acc);
-  });
+    let transactionSum = arr.reduce((cur, acc) => {
+      return Number(cur) + Number(acc);
+    });
 
-  return withdrawsSum + transactionsSum;
+    spendAmount.innerText = `${Number(transactionSum)} $`;
+  } else {
+    let withdrawSum = currentAccount.withdraws.reduce((cur, acc) => {
+      return Number(cur) + Number(acc);
+    });
+
+    let arr = [];
+
+    currentAccount.transactions.forEach((transaction) => {
+      arr.push(transaction.amount);
+    });
+
+    let transactionSum = arr.reduce((cur, acc) => {
+      return Number(cur) + Number(acc);
+    });
+
+    spendAmount.innerText = `${Number(withdrawSum) + Number(transactionSum)} $`;
+  }
 }
-
-console.log(calculateSpending());
-
-spendAmount.innerText = `${calculateSpending()}$`;
-console.log(spendAmount);
