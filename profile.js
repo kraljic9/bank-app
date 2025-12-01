@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
   calculateSpending();
 });
 
-// Signout
+// Signout event listener
 
 signoutBtn.addEventListener("click", function () {
   accountsArr.filter((account) => {
@@ -157,6 +157,8 @@ cancleTransactionBtn.addEventListener("click", () => {
 
 // Button event listeners for transactions
 
+// Button event listener deposit
+
 makeDepositBtn.addEventListener("click", () => {
   let depositArr = currentAccount.deposits;
 
@@ -183,6 +185,8 @@ makeDepositBtn.addEventListener("click", () => {
 
   localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
 });
+
+// Button event listener withdraw
 
 makeWithdrawBtn.addEventListener("click", () => {
   let withdrawArr = currentAccount.withdraws;
@@ -212,6 +216,8 @@ makeWithdrawBtn.addEventListener("click", () => {
   localStorage.setItem("currentAccount", JSON.stringify(currentAccount));
   calculateSpending();
 });
+
+// Button event listener transaction
 
 makeTransactionBtn.addEventListener("click", () => {
   let transactionAmount = transactionAmountInput.value;
@@ -263,6 +269,8 @@ makeTransactionBtn.addEventListener("click", () => {
   profileBalance.textContent = `${currentAccount.balance}$`;
   calculateSpending();
 });
+
+// Calculate spending function
 
 function calculateSpending() {
   if (
