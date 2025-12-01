@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+/* Body and container style */
+
 body {
   font-size: 1.3rem;
   height: 100vh;
@@ -16,6 +18,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Navigation style */
 
 nav {
   display: flex;
@@ -74,6 +78,8 @@ nav {
   font-weight: bolder;
 }
 
+/* Footer style */
+
 footer {
   background-color: dodgerblue;
   display: flex;
@@ -91,6 +97,8 @@ footer {
 .footer-right {
   font-size: 0.9rem;
 }
+
+/* Main style */
 
 main {
   flex: 1;
@@ -111,6 +119,8 @@ main {
   justify-content: space-between;
   margin-top: 32px;
 }
+
+/* Deposit box stlye */
 
 .deposits {
   width: 400px;
@@ -166,6 +176,8 @@ main {
   border-radius: 10px;
 }
 
+/* Withdraw box style */
+
 .withdraws {
   width: 400px;
   height: 300px;
@@ -214,6 +226,8 @@ main {
   border-radius: 10px;
 }
 
+/* Transaction box style */
+
 .transactions {
   width: 400px;
   height: 300px;
@@ -259,6 +273,8 @@ main {
 }
 
 /* Container styles */
+
+/* Deposit container style */
 
 .deposit-container {
   background-color: dodgerblue;
@@ -338,6 +354,8 @@ main {
   width: 80%;
 }
 
+/* Withdraw container style */
+
 .withdraw-container {
   background-color: dodgerblue;
   color: white;
@@ -409,6 +427,8 @@ main {
   border-radius: 10px;
   width: 80%;
 }
+
+/* Transaction container style */
 
 .transaction-container {
   background-color: dodgerblue;
